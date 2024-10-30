@@ -72,29 +72,25 @@ The backend is structured as a service-oriented application, making it easy to e
 
 ### Data Flow
 
-1. **HTTP Response Collection**: The backend exposes endpoints to log and retrieve HTTP responses.
-2. **Polling Mechanism**: The frontend can call the `/ping/history` endpoint every few seconds to fetch new response data.
-3. **Data Management**: MongoDB stores each response with headers, payload, status, and other metadata.
+1. **HTTP Response Collection**: The backend exposes endpoints to log and retrieve HTTP responses. <br/> 
+2. **Polling Mechanism**: The frontend can call the `/ping/history` endpoint every few seconds to fetch new response data. <br/> 
+3. **Data Management**: MongoDB stores each response with headers, payload, status, and other metadata. <br/> 
 
 ### Directory Structure
 
-The top-level directory is "HTTP-MONITOR-SERVER", indicating this is the main project directory.
-Under this, there are several subdirectories:
-
 <p> 
-"src" - the main source code directory, containing various modules and files. /n
-"test" - directory for test-related files. /n
-"OUTLINE" - possibly a directory for high-level documentation or planning files. /n 
+"src" - the main source code directory, containing various modules and files. <br/> 
+"test" - directory for test-related files. <br/> 
+"OUTLINE" - possibly a directory for high-level documentation or planning files. <br/>  
 </p>
 
-
 <p> 
-Inside the "src" directory, there are several subdirectories:  /n 
-"common" - likely contains shared utility functions, constants, or base classes.  /n 
-"database" - files related to the database integration, such as the DAO (Data Access Object).  /n 
-"utils" - additional utility files.  /n 
-"config" - configuration-related files.  /n 
-"modules/ping" - files related to the "ping" functionality, such as controllers, services, and specifications.  /n 
-"schemas" - files defining the application's data models or schemas. /n 
+Inside the "src" directory, there are several subdirectories:  <br/>  
+"common" - likely contains shared utility functions, constants, or base classes.  <br/>  
+"database" - files related to the database integration, such as the DAO (Data Access Object). <br/>  
+"utils" - additional utility files.  <br/>  
+"config" - configuration-related files.  <br/>  
+"modules/ping" - files related to the "ping" functionality, such as controllers, services, and specifications.  <br/>  
+"schemas" - files defining the application's data models or schemas. <br/> 
 </p>
 
