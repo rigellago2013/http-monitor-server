@@ -6,8 +6,7 @@ import { CLIENT_SOCKET_ORIGIN } from '../../common/utils/constants';
 @WebSocketGateway({
   cors: {
     origin: CLIENT_SOCKET_ORIGIN,
-    methods: ['GET', 'POST'],
-    credentials: true,
+    methods: ['GET', 'POST']
   },
 })
 export class PingGateway {

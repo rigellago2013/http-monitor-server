@@ -1,7 +1,6 @@
-import { CLIENT_SOCKET_ORIGIN } from '../common/utils/constants';
+import { CLIENT_ORIGIN } from '../common/utils/constants';
 
 export const corsConfig = {
-  origin: CLIENT_SOCKET_ORIGIN,
-  methods: ['GET', 'POST'],
-  credentials: true,
+  origin: CLIENT_ORIGIN,
+  methods: ['GET', 'POST']
 };
