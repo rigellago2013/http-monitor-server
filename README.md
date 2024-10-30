@@ -71,11 +71,10 @@ Inside the "src" directory, there are several subdirectories:  <br/> <br/>
 <p> The key design choices and reasoning behind this structure include: </p> <br/> <br/> 
 
 <p>  NestJS is a popular Node.js framework that is well-suited for building scalable and efficient backend applications. It provides a modular and opinionated structure that aligns with the directory layout you've shown. </p> <br/> <br/> 
-
-<p> Modularity: The project is organized into distinct modules, such as "ping", "database", and "config". This modular approach promotes code reusability, maintainability, and separation of concerns. </p> <br/>
-<p> Separation of Concerns: The separation of files into directories like "common", "utils", and "schemas" suggests a clear separation of different types of functionality, making the codebase more organized and easier to navigate. </p> <br/>
-<p> TypeScript: The extensive use of TypeScript files (.ts) indicates that this project is taking advantage of TypeScript's static typing, which can improve code quality, maintainability, and developer productivity. </p> <br/>
-<p> Testing: The presence of ".spec.ts" files suggests that the project includes a well-established testing framework, likely using a tool like Jest or Jasmine, to ensure the reliability and correctness of the codebase. </p> <br/>
-<p> Configuration Management: The "config" directory indicates that the project has a dedicated place to store and manage various configuration settings, such as database connections, environment-specific variables, and other application-wide configurations. </p> <br/>
-<p> Dependency Management: The "node_modules" directory is where the project's dependencies, including NestJS and any other third-party libraries, are installed and managed, likely using a package manager like npm or yarn.</p> <br/>
+<p> Modularity: The project is organized into distinct modules, such as "ping", "database", and "config". This modular approach promotes code reusability, maintainability, and separation of concerns. </p> 
+<p> Separation of Concerns: The separation of files into directories like "common", "utils", and "schemas" suggests a clear separation of different types of functionality, making the codebase more organized and easier to navigate. </p> 
+<p> TypeScript: The extensive use of TypeScript files (.ts) indicates that this project is taking advantage of TypeScript's static typing, which can improve code quality, maintainability, and developer productivity. </p> 
+<p> Testing: The presence of ".spec.ts" files suggests that the project includes a well-established testing framework, likely using a tool like Jest or Jasmine, to ensure the reliability and correctness of the codebase. </p> 
+<p> Configuration Management: The "config" directory indicates that the project has a dedicated place to store and manage various configuration settings, such as database connections, environment-specific variables, and other application-wide configurations. </p> 
+<p> Dependency Management: The "node_modules" directory is where the project's dependencies, including NestJS and any other third-party libraries, are installed and managed, likely using a package manager like npm or yarn.</p> 
 
