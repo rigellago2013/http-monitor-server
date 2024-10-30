@@ -13,7 +13,7 @@ export class PingService implements OnModuleDestroy {
   constructor(
     private readonly pingDAO: PingDAO
   ) {
-    this.cronJob = cron.schedule('*/20 * * * * *', () => this.pingEndpoint());
+    this.cronJob = cron.schedule('*/5 * * * *', () => this.pingEndpoint());
   }
 
   async pingEndpoint() {
