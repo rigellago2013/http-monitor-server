@@ -10,6 +10,7 @@ async function bootstrap() {
   app.enableCors({
     origin: (origin, callback) => {
       const allowedOrigins = [
+        '*',
         'https://http-monitor-client.vercel.app',
         'https://http-monitor-client-6kioj8j41-rigels-projects-85d99a61.vercel.app'
       ];
