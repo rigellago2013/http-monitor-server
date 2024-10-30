@@ -58,42 +58,43 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
-## Deployment
+## Architecture
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+The backend is structured as a service-oriented application, making it easy to extend and maintain.
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+### Overview
 
-```bash
-$ npm install -g mau
-$ mau deploy
-```
+| Component    | Technology         | Description                                        |
+|--------------|--------------------|----------------------------------------------------|
+| **Framework**| NestJS             | Backend framework for building scalable APIs       |
+| **Database** | MongoDB            | Data storage for HTTP response records             |
+| **CORS**     | NestJS Middleware  | Allows requests from authorized frontends          |
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+### Data Flow
 
-## Resources
+1. **HTTP Response Collection**: The backend exposes endpoints to log and retrieve HTTP responses.
+2. **Polling Mechanism**: The frontend can call the `/ping/history` endpoint every few seconds to fetch new response data.
+3. **Data Management**: MongoDB stores each response with headers, payload, status, and other metadata.
 
-Check out a few resources that may come in handy when working with NestJS:
+### Directory Structure
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+The top-level directory is "HTTP-MONITOR-SERVER", indicating this is the main project directory.
+Under this, there are several subdirectories:
 
-## Support
+<p> 
+"src" - the main source code directory, containing various modules and files. /n
+"test" - directory for test-related files. /n
+"OUTLINE" - possibly a directory for high-level documentation or planning files. /n 
+</p>
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
 
-## Stay in touch
+<p> 
+Inside the "src" directory, there are several subdirectories:  /n 
+"common" - likely contains shared utility functions, constants, or base classes.  /n 
+"database" - files related to the database integration, such as the DAO (Data Access Object).  /n 
+"utils" - additional utility files.  /n 
+"config" - configuration-related files.  /n 
+"modules/ping" - files related to the "ping" functionality, such as controllers, services, and specifications.  /n 
+"schemas" - files defining the application's data models or schemas. /n 
+</p>
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
