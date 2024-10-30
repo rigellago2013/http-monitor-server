@@ -68,9 +68,8 @@ Inside the "src" directory, there are several subdirectories:  <br/> <br/>
 
 ### Choice of technologies and reasoning
 
-<p> The key design choices and reasoning behind this structure include: </p> <br/> <br/> 
-
-<p>  NestJS is a popular Node.js framework that is well-suited for building scalable and efficient backend applications. It provides a modular and opinionated structure that aligns with the directory layout you've shown. </p> <br/> <br/> 
+<p> The key design choices and reasoning behind this structure include: </p> <br/> 
+<p>  NestJS is a popular Node.js framework that is well-suited for building scalable and efficient backend applications. It provides a modular and opinionated structure that aligns with the directory layout you've shown. </p> <br/> 
 <p> Modularity: The project is organized into distinct modules, such as "ping", "database", and "config". This modular approach promotes code reusability, maintainability, and separation of concerns. </p> 
 <p> Separation of Concerns: The separation of files into directories like "common", "utils", and "schemas" suggests a clear separation of different types of functionality, making the codebase more organized and easier to navigate. </p> 
 <p> TypeScript: The extensive use of TypeScript files (.ts) indicates that this project is taking advantage of TypeScript's static typing, which can improve code quality, maintainability, and developer productivity. </p> 
