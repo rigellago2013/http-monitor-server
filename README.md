@@ -45,7 +45,7 @@ The backend is structured as a service-oriented application, making it easy to e
 ### Data Flow
 
 1. **HTTP Response Collection**: The backend exposes endpoints to log and retrieve HTTP responses. <br/> 
-2. **Polling Mechanism**: The frontend can call the `/ping/history` endpoint every few seconds to fetch new response data to mimik realtime udpate since vercel does not support socket io.
+2. **Polling Mechanism**: The frontend can call the `/ping/history` endpoint every few seconds to fetch new response data to mimic realtime udpate since vercel does not support socket io.
 3. **Data Management**: MongoDB stores each response with headers, payload, status, and other metadata. <br/> 
 
 ### Directory Structure
