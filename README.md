@@ -45,7 +45,7 @@ The backend is structured as a service-oriented application, making it easy to e
 ### Data Flow
 
 1. **HTTP Response Collection**: The backend exposes endpoints to log and retrieve HTTP responses. <br/> 
-2. **Polling Mechanism**: The frontend can call the `/ping/history` endpoint every few seconds yse SOCKET IO to fetch new response data. <br/> 
+2. **Polling Mechanism**: The frontend can call the `/ping/history` endpoint every few seconds using SOCKET IO to fetch new response data. (SOCKET only works on local since vercel does not support SOCKET.) *face slap <br/> 
 3. **Data Management**: MongoDB stores each response with headers, payload, status, and other metadata. <br/> 
 
 ### Directory Structure
@@ -76,4 +76,16 @@ Inside the "src" directory, there are several subdirectories:  <br/> <br/>
 <p> Testing: The presence of ".spec.ts" files suggests that the project includes a well-established testing framework, likely using a tool like Jest or Jasmine, to ensure the reliability and correctness of the codebase. </p> 
 <p> Configuration Management: The "config" directory indicates that the project has a dedicated place to store and manage various configuration settings, such as database connections, environment-specific variables, and other application-wide configurations. </p> 
 <p> Dependency Management: The "node_modules" directory is where the project's dependencies, including NestJS and any other third-party libraries, are installed and managed, likely using a package manager like npm or yarn.</p> 
+
+### Assumptions Made
+
+<p> Resource Limitations on Hosting: <p>
+
+<p> Hosting Constraints: The hosting environment may have restrictions on real-time data handling since I use FREE, such as limited WebSocket connections or CPU and memory resources. These limitations can hinder the performance of applications that rely heavily on real-time data. </p> 
+<p> Data Consumption Challenges: Given that the frontend cannot consume broadcasted data directly from the backend, alternative methods for data retrieval must be considered. For instance, frequent polling could be implemented to periodically fetch data from the backend instead of relying on a push mechanism.  </p>
+
+### Future improvements
+
+<p> Pagination, where more items are automatically loaded as the user clicks the pages. This can provide a more fluid experience, especially for content-heavy applications. </p> 
+<p> Search and Filter Integration: Combine pagination with search and filter functionality to allow users to narrow down results and navigate through a smaller, more relevant dataset.  </p> 
 
