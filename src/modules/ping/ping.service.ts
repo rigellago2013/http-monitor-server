@@ -1,27 +1,26 @@
-import { Injectable, Logger } from '@nestjs/common';
+import { Injectable, Logger, OnModuleDestroy  } from '@nestjs/common';
 import axios from 'axios';
-import { PingGateway } from './ping.gateway';
 import * as cron from 'node-cron';
 import { PingDAO } from './dao/ping.dao';
 import { PingResponseDto } from '../ping/dto/ping-response.dto';
+import { HTTPBIN_ORG_URL } from '../../common/utils/constants';
 
 @Injectable()
-export class PingService {
+export class PingService implements OnModuleDestroy {
   private readonly logger = new Logger(PingService.name);
+  private cronJob: cron.ScheduledTask;
 
   constructor(
-    private readonly pingDAO: PingDAO,
-    private pingGateway: PingGateway,
+    private readonly pingDAO: PingDAO
   ) {
-    cron.schedule('10 * * * * *', () => this.pingEndpoint());
+    this.cronJob = cron.schedule('*/20 * * * * *', () => this.pingEndpoint());
   }
 
   async pingEndpoint() {
     try {
       const randomPayload = { key: Math.random().toString(36).substring(7) };
-      const axiosResponse = await axios.post('https://httpbin.org/anything', randomPayload);
+      const axiosResponse = await axios.post(HTTPBIN_ORG_URL, randomPayload);
 
-      // Map axios response to ResponseDto
       const responseDto: PingResponseDto = {
         args: axiosResponse.data.args || {},
         data: axiosResponse.data.data || '',
@@ -36,11 +35,11 @@ export class PingService {
         url: axiosResponse.data.url,
       };
 
-      const savedResponse = await this.pingDAO.create(responseDto);
+      await this.pingDAO.create(responseDto);
       this.logger.log('Ping response saved to database.');
-      this.pingGateway.sendUpdate(savedResponse);
     } catch (error) {
-      this.logger.error('Failed to ping endpoint', error);
+      this.logger.error('Failed to ping endpoint', error.message, error.stack);
+   
     }
   }
 
@@ -52,4 +51,11 @@ export class PingService {
       throw new Error('Could not fetch historical data');
     }
   }
+
+    // Clean up cron job on module destruction
+    onModuleDestroy() {
+      if (this.cronJob) {
+        this.cronJob.stop(); // Stop the cron job
+      }
+    }
 }
