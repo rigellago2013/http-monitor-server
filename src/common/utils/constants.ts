@@ -1,0 +1,1 @@
+export const CLIENT_SOCKET_ORIGIN = 'http://localhost:8080';
