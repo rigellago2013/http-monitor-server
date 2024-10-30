@@ -57,7 +57,7 @@ The backend is structured as a service-oriented application, making it easy to e
 
 <p> 
 Inside the "src" directory, there are several subdirectories:  <br/> <br/>   
-"common" - likely contains shared utility functions, constants, or base classes.  <br/>  
+"common" -  contains shared utility functions, constants, or base classes.  <br/>  
 "database" - files related to the database integration, such as the DAO (Data Access Object). <br/>  
 "utils" - additional utility files.  <br/>  
 "config" - configuration-related files.  <br/>  
