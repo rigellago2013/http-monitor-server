@@ -5,7 +5,7 @@ import { CLIENT_SOCKET_ORIGIN } from '../../common/utils/constants';
 
 @WebSocketGateway({
   cors: {
-    origin: '*',
+    origin: CLIENT_SOCKET_ORIGIN,
     methods: ['GET', 'POST']
   },
 })
