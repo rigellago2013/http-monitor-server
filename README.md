@@ -1,31 +1,3 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
-
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
-
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
-
-## Description
-
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
-
 ## Project setup
 
 ```bash
@@ -58,42 +30,62 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
-## Deployment
+## Architecture
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+The backend is structured as a service-oriented application, making it easy to extend and maintain.
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+### Overview
 
-```bash
-$ npm install -g mau
-$ mau deploy
-```
+| Component    | Technology         | Description                                        |
+|--------------|--------------------|----------------------------------------------------|
+| **Framework**| NestJS             | Backend framework for building scalable APIs       |
+| **Database** | MongoDB            | Data storage for HTTP response records             |
+| **CORS**     | NestJS Middleware  | Allows requests from authorized frontends          |
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+### Data Flow
 
-## Resources
+1. **HTTP Response Collection**: The backend exposes endpoints to log and retrieve HTTP responses. <br/> 
+2. **Polling Mechanism**: The frontend can call the `/ping/history` endpoint every few seconds to fetch new response data to mimic realtime udpate since vercel does not support socket io.
+3. **Data Management**: MongoDB stores each response with headers, payload, status, and other metadata. <br/> 
 
-Check out a few resources that may come in handy when working with NestJS:
+### Directory Structure
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+<p> 
+"src" - the main source code directory, containing various modules and files. <br/> 
+"test" - directory for test-related files. <br/> 
+</p>
 
-## Support
+<p> 
+Inside the "src" directory, there are several subdirectories:  <br/> <br/>   
+"common" -  contains shared utility functions, constants, or base classes.  <br/>  
+"database" - files related to the database integration, such as the DAO (Data Access Object). <br/>  
+"utils" - additional utility files.  <br/>  
+"config" - configuration-related files.  <br/>  
+"modules/ping" - files related to the "ping" functionality, such as controllers, services, and specifications.  <br/>  
+"schemas" - files defining the application's data models or schemas. <br/> 
+</p>
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
 
-## Stay in touch
+### Choice of technologies and reasoning
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+<p> The key design choices and reasoning behind this structure include: </p> <br/> 
+<p>  NestJS is a popular Node.js framework that is well-suited for building scalable and efficient backend applications. It provides a modular and opinionated structure that aligns with the directory layout you've shown. </p> <br/> 
+<p> Modularity: The project is organized into distinct modules, such as "ping", "database", and "config". This modular approach promotes code reusability, maintainability, and separation of concerns. </p> 
+<p> Separation of Concerns: The separation of files into directories like "common", "utils", and "schemas" suggests a clear separation of different types of functionality, making the codebase more organized and easier to navigate. </p> 
+<p> TypeScript: The extensive use of TypeScript files (.ts) indicates that this project is taking advantage of TypeScript's static typing, which can improve code quality, maintainability, and developer productivity. </p> 
+<p> Testing: The presence of ".spec.ts" files suggests that the project includes a well-established testing framework, likely using a tool like Jest or Jasmine, to ensure the reliability and correctness of the codebase. </p> 
+<p> Configuration Management: The "config" directory indicates that the project has a dedicated place to store and manage various configuration settings, such as database connections, environment-specific variables, and other application-wide configurations. </p> 
+<p> Dependency Management: The "node_modules" directory is where the project's dependencies, including NestJS and any other third-party libraries, are installed and managed, likely using a package manager like npm or yarn.</p> 
 
-## License
+### Assumptions Made
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+<p> Resource Limitations on Hosting: <p>
+
+<p> Hosting Constraints: The hosting environment may have restrictions on real-time data handling since I use FREE, such as limited WebSocket connections or CPU and memory resources. These limitations can hinder the performance of applications that rely heavily on real-time data. </p> 
+<p> Data Consumption Challenges: Given that the frontend cannot consume broadcasted data directly from the backend, alternative methods for data retrieval must be considered. For instance, frequent polling could be implemented to periodically fetch data from the backend instead of relying on a push mechanism.  </p>
+
+### Future improvements
+
+<p> Pagination, where more items are automatically loaded as the user clicks the pages. This can provide a more fluid experience, especially for content-heavy applications. </p> 
+<p> Search and Filter Integration: Combine pagination with search and filter functionality to allow users to narrow down results and navigate through a smaller, more relevant dataset.  </p> 
+
