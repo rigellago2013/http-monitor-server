@@ -81,7 +81,6 @@ The backend is structured as a service-oriented application, making it easy to e
 <p> 
 "src" - the main source code directory, containing various modules and files. <br/> 
 "test" - directory for test-related files. <br/> 
-"OUTLINE" - possibly a directory for high-level documentation or planning files. <br/>  
 </p>
 
 <p> 
