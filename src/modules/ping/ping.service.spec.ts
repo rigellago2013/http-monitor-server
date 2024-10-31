@@ -13,28 +13,21 @@ const mockPingDAO = {
   find: jest.fn(),
 };
 
-const mockPingGateway = {
-  sendUpdate: jest.fn(),
-};
-
-
-const loggerErrorSpy = jest.spyOn(Logger.prototype, 'error').mockImplementation(() => {});
-const loggerLogSpy = jest.spyOn(Logger.prototype, 'log').mockImplementation(() => {});
+const loggerErrorSpy = jest
+  .spyOn(Logger.prototype, 'error')
+  .mockImplementation(() => {});
 
 describe('PingService', () => {
   let service: PingService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [
-        PingService,
-        { provide: PingDAO, useValue: mockPingDAO }
-      ],
+      providers: [PingService, { provide: PingDAO, useValue: mockPingDAO }],
     }).compile();
-  
+
     service = module.get<PingService>(PingService);
   });
-  
+
   afterEach(() => {
     jest.clearAllMocks();
     service.onModuleDestroy(); // Stops the cron job after each test
@@ -57,9 +50,9 @@ describe('PingService', () => {
           method: 'post',
         },
       };
-    
+
       (axios.post as jest.Mock).mockResolvedValue(mockResponse);
-    
+
       const responseDto: PingResponseDto = {
         args: {},
         data: '',
@@ -71,9 +64,9 @@ describe('PingService', () => {
         origin: '127.0.0.1',
         url: HTTPBIN_ORG_URL,
       };
-    
+
       await service.pingEndpoint();
-    
+
       expect(mockPingDAO.create).toHaveBeenCalledWith(responseDto); // Only validate DAO call
     });
 
@@ -83,7 +76,11 @@ describe('PingService', () => {
 
       await service.pingEndpoint();
 
-      expect(loggerErrorSpy).toHaveBeenCalledWith('Failed to ping endpoint', errorMessage, expect.any(String));
+      expect(loggerErrorSpy).toHaveBeenCalledWith(
+        'Failed to ping endpoint',
+        errorMessage,
+        expect.any(String),
+      );
     });
   });
 
@@ -102,7 +99,9 @@ describe('PingService', () => {
       const errorMessage = 'Database Error';
       mockPingDAO.find.mockRejectedValue(new Error(errorMessage));
 
-      await expect(service.getHistoricalData()).rejects.toThrow('Could not fetch historical data');
+      await expect(service.getHistoricalData()).rejects.toThrow(
+        'Could not fetch historical data',
+      );
     });
   });
 

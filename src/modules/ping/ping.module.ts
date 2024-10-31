@@ -7,9 +7,11 @@ import { PingService } from './ping.service';
 
 @Module({
   imports: [
-    MongooseModule.forFeature([{ name: Response.name, schema: ResponseSchema }])
+    MongooseModule.forFeature([
+      { name: Response.name, schema: ResponseSchema },
+    ]),
   ],
   providers: [PingDAO, PingService],
-  controllers: [PingController]
+  controllers: [PingController],
 })
 export class PingModule {}

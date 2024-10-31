@@ -1,7 +1,7 @@
 // src/schemas/response.schema.ts
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument } from 'mongoose';
- 
+
 export type ResponseDocument = HydratedDocument<Response>;
 
 @Schema()
