@@ -105,7 +105,7 @@ $ npm install
 $ npm run start:dev
 ```
 
-### SCHEMA
+### Database Schema
 
 ```bash
 // src/schemas/response.schema.ts
