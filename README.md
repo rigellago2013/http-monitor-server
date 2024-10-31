@@ -86,4 +86,18 @@ Inside the "src" directory, there are several subdirectories:  <br/> <br/>
 
 
 ### Testing strategy and core component identification
-<p> <strong> Core components </strong> can be found on 'src/module/ping' which includes DAO, DTO, Service and Testing (ping.service.spec.ts) </p>
+<p> <strong> Core components </strong> can be found on 'src/module/ping' which includes DAO, DTO, Service and Testing (ping.service.spec.ts) which contains main functionalities of the backend that includes ping to httpbin.org, saving pinged data, and pulling historical data. </p>
+
+### Run project on your local
+```bash
+#run
+$ git clone https://github.com/rigellago2013/http-monitor-server.git
+$ npm install
+```
+<strong> Important </strong>
+<p> Change constant variable CLIENT_ORIGIN on `src\common\utils\constants.ts` to 'http://localhost:8080' so that CORS will not block frontend request </p>
+
+```bash
+#run
+$ npm run start:dev
+```
