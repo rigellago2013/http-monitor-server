@@ -79,7 +79,7 @@ Inside the "src" directory, there are several subdirectories:  <br/> <br/>
 <p> Resource Limitations on Hosting: <p>
 
 <p> Hosting Constraints: The hosting environment may have restrictions on real-time data handling since I use FREE, such as limited WebSocket connections or CPU and memory resources. These limitations can hinder the performance of applications that rely heavily on real-time data. </p> 
-<p> Data Consumption Challenges: Given that the frontend cannot consume broadcasted data directly from the backend, alternative methods for data retrieval must be considered. For instance, frequent polling could be implemented to periodically fetch data from the backend instead of relying on a push mechanism.  </p>
+<p> Data Consumption Challenges: Given that the frontend cannot consume broadcasted data directly from the backend, alternative methods for data retrieval must be considered. For instance, frequent polling from front end could be implemented to periodically fetch data from the backend instead of relying on a push mechanism.  </p>
 
 ### Future improvements
 
