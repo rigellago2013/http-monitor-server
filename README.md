@@ -1,7 +1,10 @@
 ## Project setup
 
 ```bash
+$ git clone https://github.com/rigellago2013/http-monitor-server.git
 $ npm install
+
+** Please see other instructions below on how to run on local
 ```
 
 ## Compile and run the project
@@ -88,7 +91,7 @@ Inside the "src" directory, there are several subdirectories:  <br/> <br/>
 ### Testing strategy and core component identification
 <p> <strong> Core components </strong> can be found on 'src/module/ping' which includes DAO, DTO, Service and Testing (ping.service.spec.ts) which contains main functionalities of the backend that includes ping to httpbin.org, saving pinged data, and pulling historical data. </p>
 
-### Run project on your local
+### How to run project on your local
 ```bash
 #run
 $ git clone https://github.com/rigellago2013/http-monitor-server.git
