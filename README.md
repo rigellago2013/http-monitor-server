@@ -21,13 +21,7 @@ $ npm run start:prod
 
 ```bash
 # unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+$ npm run test -- --coverage 
 ```
 
 ## Architecture
@@ -45,7 +39,7 @@ The backend is structured as a service-oriented application, making it easy to e
 ### Data Flow
 
 1. **HTTP Response Collection**: The backend exposes endpoints to log and retrieve HTTP responses. <br/> 
-2. **Polling Mechanism**: The frontend can call the `/ping/history` endpoint every few seconds to fetch new response data to mimic realtime udpate since vercel does not support socket io.
+2. **Polling Mechanism**: The frontend can call the `/ping/history` endpoint every second to fetch new response data to mimic realtime udpate since vercel FREE tier does not support socket io.
 3. **Data Management**: MongoDB stores each response with headers, payload, status, and other metadata. <br/> 
 
 ### Directory Structure
@@ -69,7 +63,7 @@ Inside the "src" directory, there are several subdirectories:  <br/> <br/>
 ### Choice of technologies and reasoning
 
 <p> The key design choices and reasoning behind this structure include: </p> <br/> 
-<p>  NestJS is a popular Node.js framework that is well-suited for building scalable and efficient backend applications. It provides a modular and opinionated structure that aligns with the directory layout you've shown. </p> <br/> 
+<p> NestJS is a popular Node.js framework that is well-suited for building scalable and efficient backend applications. It provides a modular and opinionated structure that aligns with the directory layout you've shown. </p> <br/> 
 <p> Modularity: The project is organized into distinct modules, such as "ping", "database", and "config". This modular approach promotes code reusability, maintainability, and separation of concerns. </p> 
 <p> Separation of Concerns: The separation of files into directories like "common", "utils", and "schemas" suggests a clear separation of different types of functionality, making the codebase more organized and easier to navigate. </p> 
 <p> TypeScript: The extensive use of TypeScript files (.ts) indicates that this project is taking advantage of TypeScript's static typing, which can improve code quality, maintainability, and developer productivity. </p> 
@@ -88,4 +82,8 @@ Inside the "src" directory, there are several subdirectories:  <br/> <br/>
 
 <p> Pagination, where more items are automatically loaded as the user clicks the pages. This can provide a more fluid experience, especially for content-heavy applications. </p> 
 <p> Search and Filter Integration: Combine pagination with search and filter functionality to allow users to narrow down results and navigate through a smaller, more relevant dataset.  </p> 
+<p> Websockets for realtime data fetching that uses less memory usage.   </p> 
 
+
+### Testing strategy and core component identification
+<p> <strong> Core components </strong> can be found on 'src/module/ping' which includes DAO, DTO, Service and Testing (ping.service.spec.ts) </p>
