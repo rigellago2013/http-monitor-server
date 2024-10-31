@@ -83,7 +83,7 @@ Inside the "src" directory, there are several subdirectories:  <br/> <br/>
 
 ### Future improvements
 
-<p> Pagination, where more items are automatically loaded as the user clicks the pages. This can provide a more fluid experience, especially for content-heavy applications. </p> 
+<p> Pagination, where more items are automatically loaded as the user clicks the pagination buttons, this can provide a more fluid experience, especially for content-heavy applications. </p> 
 <p> Search and Filter Integration: Combine pagination with search and filter functionality to allow users to narrow down results and navigate through a smaller, more relevant dataset.  </p> 
 <p> Websockets for realtime data fetching that uses less memory usage.   </p> 
 
