@@ -10,9 +10,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3  # Update to v3
+      - uses: actions/checkout@v3  
       - name: Use Node.js 20
-        uses: actions/setup-node@v3  # Update to v3
+        uses: actions/setup-node@v3
         with:
           node-version: '20'
       - run: npm ci
@@ -20,12 +20,12 @@ jobs:
       - run: npm run test -- --coverage 
 
       - name: Build application
-        run: npm run build # Builds the NestJS application
+        run: npm run build
 
   deploy:
     runs-on: ubuntu-latest
-    needs: build  # Ensures the deploy job only runs if the build job completes successfully
-    if: github.ref == 'refs/heads/main'  # Deploy only on main branch
+    needs: build
+    if: github.ref == 'refs/heads/main'
 
     steps:
       - name: Checkout code
