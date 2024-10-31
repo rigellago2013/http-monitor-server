@@ -1,3 +1,9 @@
+##http-monitor-server
+```bash
+Project url: https://http-monitor-server-production.up.railway.app/
+History route: https://http-monitor-server-production.up.railway.app/ping/history
+```
+
 ## Project setup
 
 ```bash
