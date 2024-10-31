@@ -86,7 +86,8 @@ Inside the "src" directory, there are several subdirectories:  <br/> <br/>
 <p> Pagination, where more items are automatically loaded as the user clicks the pagination buttons, this can provide a more fluid experience, especially for content-heavy applications. </p> 
 <p> Search and Filter Integration: Combine pagination with search and filter functionality to allow users to narrow down results and navigate through a smaller, more relevant dataset.  </p> 
 <p> Websockets for realtime data fetching that uses less memory usage.   </p> 
-
+<p> Token based Authentication </p> 
+<p> Display necessary data only and add view button to show more specific data </p> 
 
 ### Testing strategy and core component identification
 <p> <strong> Core components </strong> can be found on 'src/module/ping' which includes DAO, DTO, Service and Testing (ping.service.spec.ts) which contains main functionalities of the backend that includes ping to httpbin.org, saving pinged data, and pulling historical data. </p>
