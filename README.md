@@ -98,7 +98,7 @@ $ git clone https://github.com/rigellago2013/http-monitor-server.git
 $ npm install
 ```
 <strong> Important </strong>
-<p> Change constant variable CLIENT_ORIGIN on `src\common\utils\constants.ts` to 'http://localhost:8080' so that CORS will not block frontend request </p>
+<p> Change constant variable CLIENT_ORIGIN value on `src\common\utils\constants.ts` to 'http://localhost:8080' so that CORS will not block frontend request </p>
 
 ```bash
 #run
