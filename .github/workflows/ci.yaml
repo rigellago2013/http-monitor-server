@@ -17,8 +17,8 @@ jobs:
           node-version: '20'
       - run: npm ci
       - run: npm run lint
-      - run: npm run test
-
+      - run: npm run test -- --coverage 
+      
       - name: Build application
         run: npm run build # Builds the NestJS application
 
