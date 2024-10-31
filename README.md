@@ -56,9 +56,9 @@ The backend is structured as a service-oriented application, making it easy to e
 Inside the "src" directory, there are several subdirectories:  <br/> <br/>   
 "common" -  contains shared utility functions, constants, or base classes.  <br/>  
 "database" - files related to the database integration, such as the DAO (Data Access Object). <br/>  
-"utils" - additional utility files.  <br/>  
-"config" - configuration-related files.  <br/>  
-"modules/ping" - files related to the "ping" functionality, such as controllers, services, and specifications.  <br/>  
+"utils" - additional utility files such as constants.  <br/>  
+"config" - configuration-related files such as CORS.  <br/>  
+"modules/ping" - files related to the "ping" functionality, such as controllers, services, specifications and tests.  <br/>  
 "schemas" - files defining the application's data models or schemas. <br/> 
 </p>
 
@@ -103,4 +103,47 @@ $ npm install
 ```bash
 #run
 $ npm run start:dev
+```
+
+### SCHEMA
+
+```bash
+// src/schemas/response.schema.ts
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { HydratedDocument } from 'mongoose';
+
+export type ResponseDocument = HydratedDocument<Response>;
+
+@Schema()
+export class Response {
+  @Prop({ type: Object })
+  args: Record<string, any>;
+
+  @Prop({ type: String })
+  data: string;
+
+  @Prop({ type: Object })
+  files: Record<string, any>;
+
+  @Prop({ type: Object })
+  form: Record<string, any>;
+
+  @Prop({ type: Object })
+  headers: Record<string, string>;
+
+  @Prop({ type: Object, default: null })
+  json: any;
+
+  @Prop({ type: String })
+  method: string;
+
+  @Prop({ type: String })
+  origin: string;
+
+  @Prop({ type: String })
+  url: string;
+}
+
+export const ResponseSchema = SchemaFactory.createForClass(Response);
+
 ```
